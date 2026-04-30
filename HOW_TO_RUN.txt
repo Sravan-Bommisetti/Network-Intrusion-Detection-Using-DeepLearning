@@ -1,0 +1,101 @@
+============================================================
+  NETWORK INTRUSION DETECTION SYSTEM - HOW TO RUN
+============================================================
+
+MODELS AVAILABLE
+----------------
+  - KNN   (K-Nearest Neighbors)
+  - CNN   (Convolutional Neural Network)
+
+  NOTE: Random Forest and LSTM are NOT available due to
+  library version incompatibility with the saved model files.
+
+------------------------------------------------------------
+REQUIREMENTS
+------------------------------------------------------------
+
+Python Version : 3.13
+Required Libraries (already installed if you followed setup):
+
+  pip install flask
+  pip install tensorflow
+  pip install scikit-learn
+  pip install pandas
+  pip install numpy
+  pip install werkzeug
+
+------------------------------------------------------------
+HOW TO RUN
+------------------------------------------------------------
+
+Step 1: Open a terminal / command prompt
+
+Step 2: Navigate to the project folder
+        cd path\to\Network-Intrusion-Detection-Using-Deep-Learning-master
+
+Step 3: Run the Flask app
+        python app.py
+
+Step 4: Open your browser and go to:
+        http://127.0.0.1:5000
+
+------------------------------------------------------------
+USING THE APP
+------------------------------------------------------------
+
+The app has 3 tabs:
+
+1. RANDOM SAMPLE
+   - Picks a random row from the validation dataset
+   - Runs KNN and CNN instantly
+   - Click "Run Random Prediction"
+
+2. MANUAL INPUT
+   - Enter all 16 network traffic features manually
+   - Select Protocol Type, Service, Flag from dropdowns
+   - Fill in numeric fields
+   - Click "Predict"
+
+3. CSV UPLOAD
+   - Upload a CSV file with 16 feature columns (no label column needed)
+   - Column order must be:
+       protocol_type, service, flag, logged_in, count,
+       srv_serror_rate, srv_rerror_rate, same_srv_rate,
+       diff_srv_rate, dst_host_count, dst_host_srv_count,
+       dst_host_same_srv_rate, dst_host_diff_srv_rate,
+       dst_host_same_src_port_rate, dst_host_serror_rate,
+       dst_host_rerror_rate
+   - Select model (KNN or CNN)
+   - Click "Analyse"
+   - Results show a summary bar chart + row-by-row table
+
+------------------------------------------------------------
+ATTACK TYPES DETECTED
+------------------------------------------------------------
+
+  Normal  - Safe traffic
+  DoS     - Denial of Service attack
+  Probe   - Network scanning / probing
+  R2L     - Remote to Local attack
+  U2R     - User to Root privilege escalation
+
+------------------------------------------------------------
+FILES OVERVIEW
+------------------------------------------------------------
+
+  app.py                        - Flask backend (run this)
+  templates/index.html          - Frontend UI
+  knn_binary_class.sav          - KNN binary model
+  knn_multi_class.sav           - KNN multi-class model
+  latest_cnn_bin.h5             - CNN binary model
+  latest_cnn_multiclass.h5      - CNN multi-class model
+  fs_new validation project.csv - Validation dataset
+  Uploaded_files/               - Folder for uploaded CSVs
+
+------------------------------------------------------------
+STOP THE SERVER
+------------------------------------------------------------
+
+  Press CTRL + C in the terminal to stop the Flask server.
+
+============================================================
